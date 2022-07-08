@@ -17,9 +17,9 @@ int main(int argc, char* rgv[]) {
     int nobs = 0;
 
     // Welcome message
-    cout << "===========================================" << endl;
-    cout << "============ Welcome to Sudoku! ===========" << endl;
-    cout << "===========================================" << endl;
+    cout << "========================================" << endl;
+    cout << "=============== SUDOKU! ================" << endl;
+    cout << "========================================" << endl;
 
     playGame(gamesize, nobs);
 
