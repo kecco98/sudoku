@@ -5,6 +5,9 @@
 */
 
 #pragma once
+#include <cassert>
+#include <cstdlib>
+#include <iostream>
 
 using namespace std;
 
@@ -71,7 +74,26 @@ public:
 
     void printPuzzle();
 
+    int& operator() (int x, int y){
+        assert(x<N && y<N);
+        return grid[x][y];
+    }
+
+    bool isProblem(int x, int y){
+        return infeasible[x][y];
+    }
+
+    void assignImmutable(int x, int y, bool val) {
+        immutable[x][y] = val;
+    }
+
+    int getSize() {
+        return N;
+    }
 
 };
 
+bool feasible(Board &board, int row, int col, int val);
+bool solve(Board &board, int row, int col);
 Board generatePuzzle(int n, int nobs);
+int* generatePerm(int N);

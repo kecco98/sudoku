@@ -12,9 +12,9 @@ using namespace std;
 
 int main(int argc, char* rgv[]) {
 
-    //Prendere da prompt
-    int gamesize = 0;
-    int nobs = 0;
+    //TODO (Take from the propt this two values)
+    int gamesize = 9;
+    int nobs = 20;
 
     // Welcome message
     cout << "========================================" << endl;

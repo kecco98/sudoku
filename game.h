@@ -8,3 +8,4 @@
 #include <iostream>
 
 void playGame(int size, int nobs);
+int* getInput();
