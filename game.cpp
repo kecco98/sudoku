@@ -7,23 +7,56 @@
 
 void playGame(int size, int nobs) {
     Board board = generatePuzzle(size,nobs);
-    board.printPuzzle();
 
     int *inputVals;
 
-    inputVals = getInput();
+    do {
+
+        board.printPuzzle();
+        inputVals = getInput();
+
+        //Check if values are out of range throw error and continue
+
+        bool invalid = false;
+        for(int i=0; i<3; i++){
+            if(!board.inBound(inputVals[i])){
+                invalid = true;
+            }
+        }
+
+        if(invalid) {
+            cout << "Values entered must be between 1 and " << board.getSize() << endl;
+            continue;
+        }
+
+        if(board.feasibleUser((inputVals[0] - 1), (inputVals[1] - 1), inputVals[2])){
+
+            if(!board.checkImmutable((inputVals[0] - 1), (inputVals[1] - 1))){
+                board.assigValue((inputVals[0]-1), (inputVals[1]-1), inputVals[2]);
+            } else {
+                cout << "You can't change that value!" << endl;
+            }
+
+        } else {
+            cout << "Not feasible!" << endl;
+        }
+
+        for(int i=0; i<3; i++){
+            inputVals[i] = 0;
+        }
+
+    } while(!board.checkPuzzle());
 
 }
 
 int* getInput(){
-    int res[3];
+    static int res[3];
 
-    //TODO (Do better the input from terminal!!)
     cout << "Insert coordinates" << endl;
-    cout << "x" << endl;
-    cin >> res[0];
-    cout << "y" << endl;
-    cin >> res[1];
-    cout << "val" << endl;
-    cin >> res[2];
+    cout << "x y val :" << endl;
+    cin >> res[0] >> res[1] >> res[2];
+
+    cout << "You choose to insert the value "<< res[2] << " in position (" << res[0] << "," << res[1] << ")" <<endl;
+
+    return res;
 }

@@ -70,6 +70,81 @@ void Board::printPuzzle() {
 
 }
 
+bool Board::inBound(int val) {
+    if((val > 0) && (val <= N)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool Board::checkPuzzle() {
+    int val = 0;
+
+    for(int i=0; i<N; i++){
+        for(int j=0; j<N; j++){
+            val = (*this)(i,j);
+            if(!feasible(*this, i, j, val)){
+                (*this)(i,j) = val;
+                return false;
+            }
+            (*this)(i,j) = val;
+        }
+    }
+    return true;
+}
+
+bool Board::feasibleUser(int row, int col, int val){
+
+    int blockSize =  (int)sqrt(N);
+
+    if (row >= N){
+        std::cout << "You can't play off the game board!" << endl;
+        return false;
+    }
+
+    if (col >= N){
+        std::cout << "You can't play off the game board!" << endl;
+        return false;
+    }
+
+    bool isfeasible = true;
+
+    for(int i = 0; i < N; i++){
+        if((*this)(row,i) == val){
+            infeasible[row][i] = true;
+            isfeasible = false;
+        } else {
+            infeasible[row][i] = false;
+        }
+    }
+
+    for(int i = 0; i < N; i++){
+        if((*this)(i,col) == val){
+            infeasible[i][col] = true;
+            isfeasible = false;
+        } else {
+            infeasible[i][col] = false;
+        }
+    }
+
+    int blockRow = blockSize*(row/blockSize);
+    int blockCol = blockSize*(col/blockSize);
+
+    // // See if used yet in block
+    for(int i = 0; i < blockSize; i++){
+        for(int j = 0; j < blockSize; j++){
+            if((*this)(blockRow + i,blockCol + j) == val){
+                infeasible[blockRow + i][blockCol + j] = true;
+                isfeasible = false;
+            } else {
+                infeasible[blockRow + i][blockCol + j] = false;
+            }
+        }
+    }
+    return isfeasible;
+}
+
 bool feasible(Board &board, int row, int col, int val){
 
     int N = board.getSize();

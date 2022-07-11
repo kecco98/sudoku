@@ -91,6 +91,20 @@ public:
         return N;
     }
 
+    bool inBound(int val);
+
+    bool checkPuzzle();
+
+    bool feasibleUser(int row, int col, int val);
+
+    bool checkImmutable(int row, int col) {
+        return immutable[row][col];
+    }
+
+    void assigValue(int x, int y, int val){
+        (*this)(x,y)=val;
+    }
+
 };
 
 bool feasible(Board &board, int row, int col, int val);
