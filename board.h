@@ -105,6 +105,8 @@ public:
         (*this)(x,y)=val;
     }
 
+    void clearPuzzle();
+
 };
 
 bool feasible(Board &board, int row, int col, int val);

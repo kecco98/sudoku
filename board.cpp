@@ -34,7 +34,11 @@ void Board::printPuzzle() {
                 }
             } else {
                if (!isProblem(i,j)){
-                   cout << (*this)(i,j);
+                   if(checkImmutable(i,j)){
+                       cout << (*this)(i,j);
+                   } else {
+                       cout << "\033[32m" << (*this)(i,j) << "\033[39m";
+                   }
                } else {
                    cout << "\033[31m" << (*this)(i,j) << "\033[39m";
                }
@@ -143,6 +147,16 @@ bool Board::feasibleUser(int row, int col, int val){
         }
     }
     return isfeasible;
+}
+
+void Board::clearPuzzle() {
+    for(int i=0; i<N; i++){
+        for(int j=0; j<N; j++){
+            if(!checkImmutable(i,j)){
+                (*this)(i,j) = 0;
+            }
+        }
+    }
 }
 
 bool feasible(Board &board, int row, int col, int val){

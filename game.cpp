@@ -2,10 +2,15 @@
 // Created by kecco98 on 07/07/22.
 //
 
+#include <sstream>
+#include <regex>
 #include "game.h"
 #include "board.h"
 
 void playGame(int size, int nobs) {
+
+    string input;
+    bool solved;
     Board board = generatePuzzle(size,nobs);
 
     int *inputVals;
@@ -14,9 +19,22 @@ void playGame(int size, int nobs) {
 
         board.printPuzzle();
         inputVals = getInput();
+//        getline(cin, input);
+//
+//        if(input == "Solve" || input == "solve") {
+//            solved = solve(board, 0, 0);
+//            board.printPuzzle();
+//            break;
+//        }
+//
+//        if(input == "Clear" || input == "clear") {
+//            board.clearPuzzle();
+//            board.printPuzzle();
+//            break;
+//        }
+
 
         //Check if values are out of range throw error and continue
-
         bool invalid = false;
         for(int i=0; i<3; i++){
             if(!board.inBound(inputVals[i])){
@@ -46,6 +64,10 @@ void playGame(int size, int nobs) {
         }
 
     } while(!board.checkPuzzle());
+
+    if(solved){
+        cout << "The puzzle is solved!" << endl;
+    }
 
 }
 
