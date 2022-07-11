@@ -16,16 +16,16 @@ void Board::printPuzzle() {
     int extraSpace = N/10;
 
     for(int i=0; i<N; i++) {
-        cout << "+---";
+        cout << "\033[34m" << "+---" << "\033[39m";
         for(int j=0; j<extraSpace; j++){
-            cout << "-";
+            cout << "\033[34m" << "-" << "\033[39m";
         }
     }
 
-    cout <<"+"<<endl;
+    cout << "\033[34m" << "+" << "\033[39m"<<endl;
 
     for(int i=0; i<N; i++){
-        cout << "| ";
+        cout << "\033[34m" << "| " << "\033[39m";
         for(int j=0; j<N; j++){
 
             if((*this)(i,j) == 0){
@@ -43,7 +43,7 @@ void Board::printPuzzle() {
                } else {
                    //Red
                    cout << "\033[31m" << (*this)(i,j) << "\033[39m";
-
+                    //TODO (Infleasable not returning false)
                }
 
 
@@ -55,7 +55,7 @@ void Board::printPuzzle() {
             }
 
             if((j+1) % sizeBlock == 0) {
-                cout << " | ";
+                cout << "\033[34m" << " | " << "\033[39m";
             } else {
                 cout << "   ";
             }
@@ -64,14 +64,14 @@ void Board::printPuzzle() {
         cout << endl;
         if((i+1) % sizeBlock == 0){
             for(int j=0; j<N; j++){
-                cout << "+---";
+                cout << "\033[34m" << "+---" << "\033[39m";
 
                 for(int k=0; k < extraSpace; k++){
-                    cout << "-";
+                    cout << "\033[34m" << "-" << "\033[39m";
                 }
             }
 
-            cout << "+" << endl;
+            cout << "\033[34m" << "+" << "\033[39m"<<endl;
         }
     }
 

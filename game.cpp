@@ -1,11 +1,12 @@
-//
-// Created by kecco98 on 07/07/22.
-//
+/*
+ * Francesco Ciarla
+ *
+ * GAME
+*/
 
 #include <sstream>
 #include <regex>
 #include <iostream>
-#include <sstream>
 #include <vector>
 #include "game.h"
 #include "board.h"
