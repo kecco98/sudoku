@@ -9,7 +9,6 @@
 
 using namespace std;
 
-
 int main(int argc, char* rgv[]) {
 
     //TODO (Take from the propt this two values)
@@ -20,6 +19,7 @@ int main(int argc, char* rgv[]) {
     cout << "========================================" << endl;
     cout << "=============== " << "\033[34m" << "SUDOKU!" << "\033[39m" <<" ================" << endl;
     cout << "========================================" << endl;
+    //printMenu();
 
     playGame(gamesize, nobs);
 

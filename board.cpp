@@ -1,13 +1,14 @@
-//
-// Created by kecco98 on 08/07/22.
-//
+/*
+ * Francesco Ciarla
+ *
+ * Board class
+*/
 
 #include "board.h"
 #include <iostream>
 #include <cassert>
 #include <cmath>
 #include <cstdlib>
-#include <ctime>
 
 void Board::printPuzzle() {
 
@@ -40,7 +41,9 @@ void Board::printPuzzle() {
                        cout << "\033[32m" << (*this)(i,j) << "\033[39m";
                    }
                } else {
+                   //Red
                    cout << "\033[31m" << (*this)(i,j) << "\033[39m";
+
                }
 
 

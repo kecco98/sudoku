@@ -7,5 +7,9 @@
 #pragma once
 #include <iostream>
 
+using namespace std;
+
 void playGame(int size, int nobs);
-int* getInput();
+void printMenu();
+int* getInput(const string& s);
+vector<string> split (const string &s, char delim);
