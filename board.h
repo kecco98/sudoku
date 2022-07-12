@@ -107,6 +107,10 @@ public:
 
     void clearPuzzle();
 
+    void setInfeasibleFalse(int x, int y){
+        infeasible[x][y]=false;
+    }
+
 };
 
 bool feasible(Board &board, int row, int col, int val);

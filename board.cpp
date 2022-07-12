@@ -43,7 +43,7 @@ void Board::printPuzzle() {
                } else {
                    //Red
                    cout << "\033[31m" << (*this)(i,j) << "\033[39m";
-                    //TODO (Infleasable not returning false)
+                   setInfeasibleFalse(i,j);
                }
 
 
@@ -171,12 +171,14 @@ bool feasible(Board &board, int row, int col, int val){
 
     //Control row
     for(int j=0; j<N; j++){
-        if(board(row, j) == val) return false;
+        if(board(row, j) == val)
+            return false;
     }
 
     //Control col
     for(int i=0; i<N; i++){
-        if(board(i, col) == val) return false;
+        if(board(i, col) == val)
+            return false;
     }
 
     // coordinates of upper-left hand corner of block that (row,col) occupies
@@ -195,7 +197,7 @@ bool feasible(Board &board, int row, int col, int val){
 bool solve(Board &board, int row, int col){
 
     int N = board.getSize();
-    //assert(N == pow(sqrt(N),2));
+
 
     if(row == N) {
         return true;
@@ -241,7 +243,6 @@ Board generatePuzzle(int N, int nobs){
    // solve board
     bool isSolved = solve(board,0,0);
     assert(isSolved); // by filling diagonal, this should never be violated
-
 
     // remove N*N - nobs entries
     perm = generatePerm(N*N);

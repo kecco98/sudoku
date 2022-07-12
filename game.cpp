@@ -5,7 +5,6 @@
 */
 
 #include <sstream>
-#include <regex>
 #include <iostream>
 #include <vector>
 #include "game.h"
